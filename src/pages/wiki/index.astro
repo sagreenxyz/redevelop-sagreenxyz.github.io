@@ -1,0 +1,66 @@
+---
+import '../../styles/global.css';
+
+const siteTitle = 'SAGreenXYZ';
+
+const allPages = import.meta.glob<{ title?: string; badgeClass?: string }>('./*.astro', { eager: true });
+
+const allTerms = Object.entries(allPages)
+  .filter(([path]) => path !== './index.astro')
+  .map(([path, mod]) => ({
+    slug: path.replace('./', '').replace('.astro', ''),
+    title: mod.title ?? path.replace('./', '').replace('.astro', ''),
+    badgeClass: mod.badgeClass ?? 'badge-outline',
+  }))
+  .sort((a, b) => a.title.localeCompare(b.title, 'en', { sensitivity: 'base' }));
+---
+
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Wiki — {siteTitle}</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div class="navbar bg-base-100 shadow-sm">
+      <div class="navbar-start">
+        <a href="/" class="btn btn-ghost text-xl">{siteTitle}</a>
+      </div>
+      <div class="navbar-end">
+        <a href="/wiki" class="btn btn-ghost btn-sm">Wiki</a>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <div class="hero min-h-[20vh] bg-base-200">
+      <div class="hero-content text-center">
+        <div class="max-w-lg">
+          <div class="breadcrumbs text-sm justify-center mb-2">
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li>Wiki</li>
+            </ul>
+          </div>
+          <h1 class="text-4xl font-bold">Wiki</h1>
+          <p class="py-4 text-base-content/70">
+            Reference terms and concepts from coursework. {allTerms.length} entries.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <main class="container mx-auto px-4 py-12 max-w-4xl">
+      <div class="flex flex-wrap gap-2">
+        {allTerms.map(t => (
+          <a href={`/wiki/${t.slug}`} class={`badge badge-lg ${t.badgeClass} hover:opacity-80 transition-all`}>
+            {t.title}
+          </a>
+        ))}
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,17 +1,25 @@
 ---
+import '../styles/global.css';
 
+const siteTitle = 'SAGreenXYZ';
+const siteSubtitle = 'College Coursework';
 ---
 
-<html lang="en">
+<html lang="en" data-theme="dark">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>{siteTitle} — {siteSubtitle}</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<!-- Navbar -->
+		<div class="navbar bg-base-100 shadow-sm">
+			<div class="navbar-start">
+				<a href="/" class="btn btn-ghost text-xl">{siteTitle}</a>
+			</div>
+		</div>
 	</body>
 </html>

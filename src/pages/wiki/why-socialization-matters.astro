@@ -1,0 +1,245 @@
+---
+import '../../styles/global.css';
+
+export const title = "5.2 Why Socialization Matters";
+export const pageCategory = "content";
+export const badgeClass = "badge-neutral";
+export const links: string[] = [
+  "nature",
+  "nurture",
+  "nature-versus-nurture",
+  "practical-intelligence",
+  "socialization",
+  "gender-socialization",
+  "annette-lareau",
+];
+
+const siteTitle = 'SAGreenXYZ';
+const mySlug = 'why-socialization-matters';
+const allPages = import.meta.glob<{ title?: string; pageCategory?: string; badgeClass?: string; links?: string[] }>('./*.astro', { eager: true });
+const pageTerms = links.map(slug => ({
+  slug,
+  title: allPages[`./${slug}.astro`]?.title ?? slug,
+  badgeClass: allPages[`./${slug}.astro`]?.badgeClass ?? 'badge-ghost',
+  pageCategory: allPages[`./${slug}.astro`]?.pageCategory ?? 'concept',
+}));
+const categories = [...new Map(pageTerms.map(t => [t.pageCategory, t.badgeClass])).entries()]
+  .map(([category, badgeClass]) => ({ category, badgeClass }));
+const backlinks = Object.entries(allPages)
+  .filter(([, mod]) => mod.links?.includes(mySlug))
+  .map(([p, mod]) => ({
+    slug: p.replace('./', '').replace('.astro', ''),
+    title: mod.title ?? p.replace('./', '').replace('.astro', ''),
+  }))
+  .sort((a, b) => a.title.localeCompare(b.title));
+---
+
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>5.2 Why Socialization Matters — {siteTitle}</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div class="navbar bg-base-100 shadow-sm">
+      <div class="navbar-start">
+        <a href="/" class="btn btn-ghost text-xl">{siteTitle}</a>
+      </div>
+      <div class="navbar-end">
+        <a href="/wiki" class="btn btn-ghost btn-sm">Wiki</a>
+      </div>
+    </div>
+
+    <main class="container mx-auto px-4 py-12 max-w-3xl">
+
+      <!-- Breadcrumbs -->
+      <div class="breadcrumbs text-sm mb-4">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/wiki">Wiki</a></li>
+          <li>5.2 Why Socialization Matters</li>
+        </ul>
+      </div>
+
+      <!-- Title -->
+      <div class="flex items-center gap-3 mb-2">
+        <span class="badge badge-secondary">5.2</span>
+        <h1 class="text-4xl font-bold">Why Socialization Matters</h1>
+      </div>
+      <p class="text-base-content/60 mb-8">Sociology — The importance of socialization for individuals and society, and the nature versus nurture debate.</p>
+
+      <!-- Learning Objectives -->
+      <div class="card bg-base-200 mb-10">
+        <div class="card-body">
+          <h2 class="card-title text-lg">Learning Objectives</h2>
+          <p class="text-sm text-base-content/70 mb-2">By the end of this section, you should be able to:</p>
+          <ul class="list-disc list-inside space-y-1 text-sm">
+            <li>Describe the importance of socialization both for individuals and society</li>
+            <li>Explain the nature versus nurture debate</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Why It Matters -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold mb-4">Why Socialization Matters</h2>
+
+        <p class="mb-4">Socialization is critical both to individuals and to the societies in which they live — it illustrates how completely intertwined human beings and their social worlds are.</p>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="card bg-base-200">
+            <div class="card-body">
+              <h3 class="card-title text-base">For Society</h3>
+              <p class="text-sm">A society perpetuates itself by teaching its culture to new members. If new generations don't learn a society's way of life, it ceases to exist. For U.S. culture to continue, children must learn values related to democracy — the norms of voting, how to use voting machines, restaurant etiquette, and countless other practices.</p>
+            </div>
+          </div>
+          <div class="card bg-base-200">
+            <div class="card-body">
+              <h3 class="card-title text-base">For Individuals</h3>
+              <p class="text-sm">Social interaction is the means by which we gradually become able to see ourselves through the eyes of others — learning who we are and how we fit into the world. We learn material and nonmaterial culture: how to dress, what to eat, how to communicate. Without socialization, we literally have no self.</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="mb-4">The three major theoretical paradigms each approach socialization differently:</p>
+
+        <div class="overflow-x-auto mb-2">
+          <table class="table table-zebra w-full">
+            <thead>
+              <tr>
+                <th>Paradigm</th>
+                <th>View of Socialization</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Structural Functionalism</strong></td>
+                <td>Essential — trains members to operate successfully within society and perpetuates culture across generations</td>
+              </tr>
+              <tr>
+                <td><strong>Conflict Theory</strong></td>
+                <td>Reproduces inequality across generations by conveying different norms and expectations based on gender, class, and race</td>
+              </tr>
+              <tr>
+                <td><strong>Symbolic Interactionism</strong></td>
+                <td>Concerned with face-to-face exchanges and symbolic communication — e.g., dressing babies in blue or pink conveys gender role messages</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- Nature vs Nurture -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold mb-4">Nature versus Nurture</h2>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="card bg-base-200">
+            <div class="card-body">
+              <h3 class="card-title text-base">Nature</h3>
+              <p class="text-sm">The view that who we are is based in genetics — temperaments, interests, and talents are set before birth.</p>
+            </div>
+          </div>
+          <div class="card bg-base-200">
+            <div class="card-body">
+              <h3 class="card-title text-base">Nurture</h3>
+              <p class="text-sm">The view that who we are results from the relationships and caring that surround us — our social environment shapes our development.</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="mb-4">Researchers study twins to measure the impact of nature. Studies of identical twins raised separately — same genetics, different social environments — reveal the degree to which temperament and behavior are shaped by genes versus upbringing.</p>
+
+        <div class="alert alert-info mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20A10 10 0 0012 2z" />
+          </svg>
+          <div>
+            <p class="text-sm"><strong>Example:</strong> In 1968, twin girls were separated at birth and raised in different households as part of a scientific study. When reunited at age 35, Elyse Schein and Paula Bernstein were struck by how alike they were — identical hand gestures, facial expressions, and behaviors — despite being raised apart (Spratling 2007). This points to genetic roots of temperament.</p>
+          </div>
+        </div>
+
+        <p class="mb-4">Sociology's larger concern is the "nurture" side: the effect society has on human behavior. Factors like race, social class, gender, and religion all shape an individual's life alongside genetics.</p>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- Chris Langan / Annette Lareau callout -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold mb-4">Socialization and Opportunity: Chris Langan</h2>
+
+        <div class="alert mb-4">
+          <div>
+            <h4 class="font-bold">The Smartest Man You've Never Heard Of</h4>
+            <p class="text-sm mt-1">Chris Langan had an IQ over 195 but spent most of his adult life in blue-collar jobs — bouncer, firefighter, cowboy. Despite genius-level intelligence, he lacked <strong>practical intelligence</strong>, defined by psychologist Robert Sternberg as "knowing what to say to whom, knowing when to say it, and knowing how to say it for maximum effect" (Sternberg et al. 2000). That knowledge was never part of his socialization.</p>
+          </div>
+        </div>
+
+        <p class="mb-4">Malcolm Gladwell (<em>Outliers</em>, 2008) drew on sociologist <strong>Annette Lareau</strong>'s research comparing parenting across economic classes:</p>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-4">
+          <div class="card bg-base-200">
+            <div class="card-body">
+              <h3 class="card-title text-base">Lower-Income Families</h3>
+              <p class="text-sm">"Accomplishment of natural growth" — children develop with considerable independence. Parents less likely to challenge institutions on their children's behalf.</p>
+            </div>
+          </div>
+          <div class="card bg-base-200">
+            <div class="card-body">
+              <h3 class="card-title text-base">Higher-Income Families</h3>
+              <p class="text-sm">Actively foster children's talents and skills. More analytical conversation, questioning of authority, negotiation skills, and exposure to a wide range of activities.</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="mb-4">Langan was born into severe poverty. His scholarship was revoked after his mother failed to file paperwork; unable to navigate the system, he received F's on a semester in which he had earned straight A's. His genius was undermined by a socialization that never equipped him to advocate for himself institutionally.</p>
+
+        <blockquote class="border-l-4 border-primary pl-4 italic text-base-content/70 mb-4">
+          "He'd had to make his way alone, and no one — not rock stars, not professional athletes, not software billionaires, and not even geniuses — ever makes it alone." — Malcolm Gladwell
+        </blockquote>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- Concordance -->
+      <section class="mb-10">
+        <div class="collapse collapse-arrow bg-base-200">
+          <input type="checkbox" />
+          <div class="collapse-title text-xl font-semibold">
+            Concordance <span class="text-sm font-normal text-base-content/50 ml-2">({pageTerms.length} terms)</span>
+          </div>
+          <div class="collapse-content">
+            <div class="flex flex-wrap gap-2 mb-4 pt-2">
+              {categories.map(({ category, badgeClass }) => (
+              <span class={`badge ${badgeClass} badge-sm`}>{category}</span>
+            ))}
+            </div>
+            <div class="flex flex-wrap gap-2">
+              {pageTerms.map(t => (
+                <a href={`/wiki/${t.slug}`} class={`badge ${t.badgeClass} hover:opacity-80`}>{t.title}</a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {backlinks.length > 0 && <div class="divider"></div>}
+      {backlinks.length > 0 && (
+        <section>
+          <h2 class="text-lg font-semibold mb-3">Referenced by</h2>
+          <div class="flex flex-wrap gap-2">
+            {backlinks.map(bl => (
+              <a href={`/wiki/${bl.slug}`} class="btn btn-sm btn-ghost">{bl.title}</a>
+            ))}
+          </div>
+        </section>
+      )}
+    </main>
+  </body>
+</html>

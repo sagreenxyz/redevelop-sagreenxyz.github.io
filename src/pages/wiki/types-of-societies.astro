@@ -1,0 +1,319 @@
+---
+import '../../styles/global.css';
+
+export const title = "4.1 Types of Societies";
+export const pageCategory = "content";
+export const badgeClass = "badge-neutral";
+export const links: string[] = [
+  "hunter-gatherer-society",
+  "pastoral-society",
+  "horticultural-society",
+  "agricultural-society",
+  "feudal-society",
+  "industrial-society",
+  "information-society",
+  "society",
+  "nomadic",
+  "kinship",
+  "surplus-goods",
+  "specialization",
+  "social-class",
+  "social-mobility",
+  "urbanization",
+  "capitalism",
+  "feudalism",
+  "preindustrial",
+  "postindustrial",
+  "industrialization",
+  "nobility",
+  "lord",
+  "vassal",
+  "fiefdom",
+  "peasant",
+  "labor-union",
+  "agricultural-revolution",
+  "industrial-revolution",
+  "steam-engine",
+  "digital-technology",
+  "textile-mill",
+];
+
+const siteTitle = 'SAGreenXYZ';
+const mySlug = 'types-of-societies';
+const allPages = import.meta.glob<{ title?: string; pageCategory?: string; badgeClass?: string; links?: string[] }>('./*.astro', { eager: true });
+const pageTerms = links.map(slug => ({
+  slug,
+  title: allPages[`./${slug}.astro`]?.title ?? slug,
+  badgeClass: allPages[`./${slug}.astro`]?.badgeClass ?? 'badge-ghost',
+  pageCategory: allPages[`./${slug}.astro`]?.pageCategory ?? 'concept',
+}));
+const categories = [...new Map(pageTerms.map(t => [t.pageCategory, t.badgeClass])).entries()]
+  .map(([category, badgeClass]) => ({ category, badgeClass }));
+const backlinks = Object.entries(allPages)
+  .filter(([, mod]) => mod.links?.includes(mySlug))
+  .map(([p, mod]) => ({
+    slug: p.replace('./', '').replace('.astro', ''),
+    title: mod.title ?? p.replace('./', '').replace('.astro', ''),
+  }))
+  .sort((a, b) => a.title.localeCompare(b.title));
+---
+
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>4.1 Types of Societies — {siteTitle}</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div class="navbar bg-base-100 shadow-sm">
+      <div class="navbar-start">
+        <a href="/" class="btn btn-ghost text-xl">{siteTitle}</a>
+      </div>
+      <div class="navbar-end">
+        <a href="/wiki" class="btn btn-ghost btn-sm">Wiki</a>
+      </div>
+    </div>
+
+    <main class="container mx-auto px-4 py-12 max-w-3xl">
+
+      <!-- Breadcrumbs -->
+      <div class="breadcrumbs text-sm mb-4">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/wiki">Wiki</a></li>
+          <li>4.1 Types of Societies</li>
+        </ul>
+      </div>
+
+      <!-- Title -->
+      <div class="flex items-center gap-3 mb-2">
+        <span class="badge badge-secondary">4.1</span>
+        <h1 class="text-4xl font-bold">Types of Societies</h1>
+      </div>
+      <p class="text-base-content/60 mb-8">Sociology — Societal classification from preindustrial to postindustrial.</p>
+
+      <!-- Learning Objectives -->
+      <div class="card bg-base-200 mb-10">
+        <div class="card-body">
+          <h2 class="card-title text-lg">Learning Objectives</h2>
+          <p class="text-sm text-base-content/70 mb-2">By the end of this section, you should be able to:</p>
+          <ul class="list-disc list-inside space-y-1 text-sm">
+            <li>Describe the difference between preindustrial, industrial, and postindustrial societies</li>
+            <li>Explain the role of environment on preindustrial societies</li>
+            <li>Interpret the ways that technology impacts societal development</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Introduction -->
+      <section class="mb-10">
+        <p class="mb-4">In sociological terms, <strong>society</strong> refers to a group of people who live in a definable community and share the same cultural components. On a broader scale, society consists of the people and institutions around us, our shared beliefs, and our cultural ideas. Typically, many societies also share a political authority.</p>
+
+        <p class="mb-4">Consider China and the United States. Both are technologically advanced, have dense networks of transportation and communications, rely on foreign trading partners for large portions of their economies, focus on education as a way to advance their citizens, and have large and expensive militaries. Both countries have citizens that may be largely satisfied with their governments and ways of life, while still holding some degree of distrust or discontent regarding their leaders. And both have a rural versus urban disparity that can cause tension and economic inequality among the population.</p>
+
+        <p class="mb-4">But what is different? In China, a far greater percentage of people may be involved in manufacturing than America. Many of China's cities didn't evolve from ports, transit centers, or river confluences hundreds of years ago, but are newly created urban centers inhabited by recent transplants from other locations. While citizens in the U.S. can openly express their dissatisfaction with their government through social activism in person or online, Twitter, Facebook, and YouTube are banned in China, and the press is controlled by the government.</p>
+
+        <p class="mb-4">Sociologist Gerhard Lenski Jr. (1924–2015) defined societies in terms of their technological sophistication. As a society advances, so does its use of technology. Societies with rudimentary technology depend on the fluctuations of their environments, while industrialized societies have more control over the impact of their surroundings and thus develop different cultural features. This distinction is so important that sociologists generally classify societies along a spectrum of their level of industrialization—from preindustrial to industrial to postindustrial.</p>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- Preindustrial Societies -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold mb-4">Preindustrial Societies</h2>
+        <p class="mb-6">Before the Industrial Revolution and the widespread use of machines, societies were small, rural, and dependent largely on local resources. Economic production was limited to the amount of labor a human being could provide, and there were few specialized occupations. The very first occupation was that of hunter-gatherer.</p>
+
+        <!-- Hunter-Gatherer -->
+        <div class="card bg-base-200 mb-4">
+          <div class="card-body">
+            <h3 class="card-title">Hunter-Gatherer</h3>
+            <p><strong>Hunter-gatherer societies</strong> demonstrate the strongest dependence on the environment of the various types of preindustrial societies. As the basic structure of human society until about 10,000–12,000 years ago, these groups were based around kinship or tribes. Hunter-gatherers relied on their surroundings for survival—they hunted wild animals and foraged for uncultivated plants for food. When resources became scarce, the group moved to a new area to find sustenance, meaning they were nomadic.</p>
+            <p class="mt-2">These societies were common until several hundred years ago, but today only a few hundred remain in existence, such as indigenous Australian tribes sometimes referred to as "aborigines," or the Bambuti, a group of pygmy hunter-gatherers residing in the Democratic Republic of Congo. Hunter-gatherer groups are quickly disappearing as the world's population explodes.</p>
+          </div>
+        </div>
+
+        <!-- Pastoral -->
+        <div class="card bg-base-200 mb-4">
+          <div class="card-body">
+            <h3 class="card-title">Pastoral</h3>
+            <p>Changing conditions and adaptations led some societies to rely on the domestication of animals where circumstances permitted. Roughly 7,500 years ago, human societies began to recognize their ability to tame and breed animals and to grow and cultivate their own plants. <strong>Pastoral societies</strong>, such as the Maasai villagers, rely on the domestication of animals as a resource for survival. Unlike earlier hunter-gatherers who depended entirely on existing resources to stay alive, pastoral groups were able to breed livestock for food, clothing, and transportation, and they created a surplus of goods. Herding, or pastoral, societies remained nomadic because they were forced to follow their animals to fresh feeding grounds. Around the time that pastoral societies emerged, specialized occupations began to develop, and societies commenced trading with local groups.</p>
+          </div>
+        </div>
+
+        <!-- Sociology in the Real World callout -->
+        <div class="alert alert-info mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20A10 10 0 0012 2z" />
+          </svg>
+          <div>
+            <h4 class="font-bold">Sociology in the Real World — Where Societies Meet: The Worst and the Best</h4>
+            <p class="mt-1">When cultures meet, technology can help, hinder, and even destroy. The Exxon Valdez oil spillage in Alaska nearly destroyed the local inhabitants' entire way of life. Oil spills in the Nigerian Delta have forced many of the Ogoni tribe from their land and forced removal has meant that over 100,000 Ogoni have sought refuge in the country of Benin. And the massive Deepwater Horizon oil spill of 2010 drew great attention as it occurred in the United States.</p>
+            <p class="mt-2">Of course not all technology is bad. One organization, Barefoot College, located in District Ajmer, Rajasthan, India, works with numerous less developed nations to bring solar electricity, water solutions, and education. The focus for the solar projects is the village elders. The elders select two grandmothers to be trained as solar engineers and choose a village committee to help operate the solar program. The program has brought light to over 450,000 people in 1,015 villages, with a large reduction in kerosene use and carbon dioxide emissions.</p>
+          </div>
+        </div>
+
+        <!-- Horticultural -->
+        <div class="card bg-base-200 mb-4">
+          <div class="card-body">
+            <h3 class="card-title">Horticultural</h3>
+            <p>Around the same time that pastoral societies were on the rise, another type of society developed, based on the newly developed capacity for people to grow and cultivate plants. Previously, the depletion of a region's crops or water supply forced pastoral societies to relocate in search of food sources for their livestock. <strong>Horticultural societies</strong> formed in areas where rainfall and other conditions allowed them to grow stable crops. They were similar to hunter-gatherers in that they largely depended on the environment for survival, but since they didn't have to abandon their location to follow resources, they were able to start permanent settlements. This created more stability and more material goods and became the basis for the first revolution in human survival.</p>
+          </div>
+        </div>
+
+        <!-- Agricultural -->
+        <div class="card bg-base-200 mb-4">
+          <div class="card-body">
+            <h3 class="card-title">Agricultural</h3>
+            <p>While pastoral and horticultural societies used small, temporary tools such as digging sticks or hoes, <strong>agricultural societies</strong> relied on permanent tools for survival. Around 10,000 B.C.E., an explosion of new technology known as the Agricultural Revolution made farming possible—and profitable. Farmers learned to rotate the types of crops grown on their fields and to reuse waste products such as manure as fertilizer, which led to better harvests and bigger surpluses of food. New tools for digging and harvesting were made of metal, and this made them more effective and longer lasting. Human settlements grew into towns and cities, and particularly bountiful regions became centers of trade and commerce.</p>
+            <p class="mt-2">This is also the age in which people had the time and comfort to engage in more contemplative and thoughtful activities, such as music, poetry, and philosophy. This period became referred to as the "dawn of civilization" by some because of the development of leisure and humanities. Craftspeople were able to support themselves through the production of creative, decorative, or thought-provoking aesthetic objects and writings.</p>
+            <p class="mt-2">As resources became more plentiful, social classes became more divisive. Those who had more resources could afford better living and developed into a class of nobility. Difference in social standing between men and women increased. As cities expanded, ownership and preservation of resources became a pressing concern.</p>
+          </div>
+        </div>
+
+        <!-- Feudal -->
+        <div class="card bg-base-200 mb-4">
+          <div class="card-body">
+            <h3 class="card-title">Feudal</h3>
+            <p>The ninth century gave rise to <strong>feudal societies</strong>. These societies contained a strict hierarchical system of power based around land ownership and protection. The nobility, known as lords, placed vassals in charge of pieces of land. In return for the resources that the land provided, vassals promised to fight for their lords.</p>
+            <p class="mt-2">These individual pieces of land, known as fiefdoms, were cultivated by the lower class. In return for maintaining the land, peasants were guaranteed a place to live and protection from outside enemies. Power was handed down through family lines, with peasant families serving lords for generations and generations. Ultimately, the social and economic system of feudalism failed and was replaced by capitalism and the technological advances of the industrial era.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- Industrial Society -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold mb-4">Industrial Society</h2>
+        <p class="mb-4">In the eighteenth century, Europe experienced a dramatic rise in technological invention, ushering in an era known as the Industrial Revolution. What made this period remarkable was the number of new inventions that influenced people's daily lives. Within a generation, tasks that had until this point required months of labor became achievable in a matter of days. Before the Industrial Revolution, work was largely person- or animal-based, and relied on human workers or horses to power mills and drive pumps. In 1782, James Watt and Matthew Boulton created a steam engine that could do the work of twelve horses by itself.</p>
+
+        <p class="mb-4">Steam power began appearing everywhere. Instead of paying artisans to painstakingly spin wool and weave it into cloth, people turned to textile mills that produced fabric quickly at a better price and often with better quality. Rather than planting and harvesting fields by hand, farmers were able to purchase mechanical seeders and threshing machines that caused agricultural productivity to soar. Products such as paper and glass became available to the average person, and the quality and accessibility of education and health care soared.</p>
+
+        <p class="mb-4">One of the results of increased productivity and technology was the rise of urban centers. Workers flocked to factories for jobs, and the populations of cities became increasingly diverse. The new generation became less preoccupied with maintaining family land and traditions and more focused on acquiring wealth and achieving upward mobility for themselves and their families. As capitalism increased, so did social mobility.</p>
+
+        <p class="mb-4">It was during the eighteenth and nineteenth centuries of the Industrial Revolution that sociology was born. Life was changing quickly and the long-established traditions of the agricultural eras did not apply to life in the larger cities. Masses of people were moving to new environments and often found themselves faced with horrendous conditions of filth, overcrowding, and poverty. Social scientists emerged to study the relationship between the individual members of society and society as a whole.</p>
+
+        <p class="mb-4">It was during this time that power moved from the hands of the aristocracy and "old money" to business-savvy newcomers who amassed fortunes in their lifetimes. Families such as the Rockefellers and the Vanderbilts became the new power players and used their influence in business to control aspects of government as well. Eventually, concerns over the exploitation of workers led to the formation of labor unions and laws that set mandatory conditions for employees. Although the introduction of new technology at the end of the nineteenth century ended the industrial age, much of our social structure and social ideas—like family, childhood, and time standardization—have a basis in industrial society.</p>
+
+        <div class="alert">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20A10 10 0 0012 2z" />
+          </svg>
+          <span><strong>Figure 4.4:</strong> John D. Rockefeller, cofounder of the Standard Oil Company, came from an unremarkable family of salesmen and menial laborers. By his death at age 98, he was worth $1.4 billion. In industrial societies, business owners such as Rockefeller hold the majority of the power.</span>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- Postindustrial Society -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold mb-4">Postindustrial Society</h2>
+        <p class="mb-4"><strong>Information societies</strong>, sometimes known as postindustrial or digital societies, are a recent development. Unlike <strong>industrial societies</strong> that are rooted in the production of material goods, information societies are based on the production of information and services.</p>
+
+        <p class="mb-4">Digital technology is the steam engine of information societies, and computer moguls such as Steve Jobs and Bill Gates are its John D. Rockefellers and Cornelius Vanderbilts. Since the economy of information societies is driven by knowledge and not material goods, power lies with those in charge of storing and distributing information. Members of a postindustrial society are likely to be employed as sellers of services—software programmers or business consultants, for example—instead of producers of goods. Social classes are divided by access to education, since without technical skills, people in an information society lack the means for success.</p>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- Summary table -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold mb-4">Summary</h2>
+        <div class="overflow-x-auto">
+          <table class="table table-zebra w-full">
+            <thead>
+              <tr>
+                <th>Society Type</th>
+                <th>Time Period</th>
+                <th>Key Characteristics</th>
+                <th>Power Base</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Hunter-Gatherer</td>
+                <td>Until ~10,000 BCE</td>
+                <td>Nomadic, kinship-based, fully dependent on environment</td>
+                <td>Tribal elders</td>
+              </tr>
+              <tr>
+                <td>Pastoral</td>
+                <td>~7,500 years ago</td>
+                <td>Animal domestication, nomadic, surplus goods, early trade</td>
+                <td>Herding leaders</td>
+              </tr>
+              <tr>
+                <td>Horticultural</td>
+                <td>~7,500 years ago</td>
+                <td>Crop cultivation, permanent settlements, stable food supply</td>
+                <td>Local community</td>
+              </tr>
+              <tr>
+                <td>Agricultural</td>
+                <td>~10,000 BCE</td>
+                <td>Metal tools, cities, trade centers, social classes, arts</td>
+                <td>Nobility / landowners</td>
+              </tr>
+              <tr>
+                <td>Feudal</td>
+                <td>9th century CE</td>
+                <td>Strict hierarchy, land-based power, lords/vassals/peasants</td>
+                <td>Landed nobility</td>
+              </tr>
+              <tr>
+                <td>Industrial</td>
+                <td>18th–19th century</td>
+                <td>Steam power, factories, urbanization, labor movement</td>
+                <td>Business owners / capitalists</td>
+              </tr>
+              <tr>
+                <td>Postindustrial</td>
+                <td>Late 20th c.–present</td>
+                <td>Information/services economy, digital technology, education-based class</td>
+                <td>Information controllers</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Concordance -->
+      <section class="mb-10">
+        <div class="collapse collapse-arrow bg-base-200">
+          <input type="checkbox" />
+          <div class="collapse-title text-xl font-semibold">
+            Concordance <span class="text-sm font-normal text-base-content/50 ml-2">({pageTerms.length} terms)</span>
+          </div>
+          <div class="collapse-content">
+            <!-- Legend -->
+            <div class="flex flex-wrap gap-2 mb-4 pt-2">
+              {categories.map(({ category, badgeClass }) => (
+              <span class={`badge ${badgeClass} badge-sm`}>{category}</span>
+            ))}
+            </div>
+            <div class="flex flex-wrap gap-2">
+              {pageTerms.map(t => (
+                <a href={`/wiki/${t.slug}`} class={`badge ${t.badgeClass} hover:opacity-80`}>{t.title}</a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {backlinks.length > 0 && <div class="divider"></div>}
+      {backlinks.length > 0 && (
+        <section>
+          <h2 class="text-lg font-semibold mb-3">Referenced by</h2>
+          <div class="flex flex-wrap gap-2">
+            {backlinks.map(bl => (
+              <a href={`/wiki/${bl.slug}`} class="btn btn-sm btn-ghost">{bl.title}</a>
+            ))}
+          </div>
+        </section>
+      )}
+    </main>
+  </body>
+</html>

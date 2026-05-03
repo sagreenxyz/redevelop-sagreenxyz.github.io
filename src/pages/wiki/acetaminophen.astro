@@ -1,0 +1,302 @@
+---
+import '../../styles/global.css';
+
+export const title = "Acetaminophen";
+export const pageCategory = "content";
+export const badgeClass = "badge-neutral";
+export const links: string[] = [
+  "paracetamol",
+  "apap",
+  "n-acetyl-para-aminophenol",
+  "4-acetamidophenol",
+  "tylenol",
+  "panadol",
+  "analgesic",
+  "antipyretic",
+  "non-opioid",
+  "non-nsaid",
+  "para-aminophenol-derivative",
+  "cox-inhibition",
+  "cyclooxygenase",
+  "prostaglandin",
+  "endocannabinoid-system",
+  "trpv1",
+  "am404",
+  "central-nervous-system",
+  "blood-brain-barrier",
+  "bioavailability",
+  "first-pass-metabolism",
+  "hepatic-metabolism",
+  "glucuronidation",
+  "sulfation",
+  "cyp2e1",
+  "cyp3a4",
+  "napqi",
+  "n-acetyl-p-benzoquinone-imine",
+  "glutathione-conjugation",
+  "half-life",
+  "renal-excretion",
+  "pain-relief",
+  "fever-reduction",
+  "headache",
+  "osteoarthritis",
+  "postoperative-pain",
+  "otc",
+  "over-the-counter",
+  "hepatotoxicity",
+  "liver-failure",
+  "overdose",
+  "maximum-daily-dose",
+  "n-acetylcysteine",
+  "nac",
+  "antidote",
+  "acetaminophen-overdose-treatment",
+  "alcohol-interaction",
+  "warfarin",
+  "cyp-inducers",
+  "oral-tablet",
+  "liquid-suspension",
+  "extended-release",
+  "intravenous",
+  "rectal-suppository",
+];
+
+const siteTitle = 'SAGreenXYZ';
+const mySlug = 'acetaminophen';
+const allPages = import.meta.glob<{ title?: string; pageCategory?: string; badgeClass?: string; links?: string[] }>('./*.astro', { eager: true });
+const pageTerms = links.map(slug => ({
+  slug,
+  title: allPages[`./${slug}.astro`]?.title ?? slug,
+  badgeClass: allPages[`./${slug}.astro`]?.badgeClass ?? 'badge-ghost',
+  pageCategory: allPages[`./${slug}.astro`]?.pageCategory ?? 'concept',
+}));
+const categories = [...new Map(pageTerms.map(t => [t.pageCategory, t.badgeClass])).entries()]
+  .map(([category, badgeClass]) => ({ category, badgeClass }));
+const backlinks = Object.entries(allPages)
+  .filter(([, mod]) => mod.links?.includes(mySlug))
+  .map(([p, mod]) => ({
+    slug: p.replace('./', '').replace('.astro', ''),
+    title: mod.title ?? p.replace('./', '').replace('.astro', ''),
+  }))
+  .sort((a, b) => a.title.localeCompare(b.title));
+---
+
+<html lang="en" data-theme="dark">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Acetaminophen — {siteTitle}</title>
+	</head>
+	<body>
+		<!-- Navbar -->
+		<div class="navbar bg-base-100 shadow-sm">
+			<div class="navbar-start">
+				<a href="/" class="btn btn-ghost text-xl">{siteTitle}</a>
+			</div>
+		</div>
+
+		<main class="container mx-auto px-4 py-12 max-w-3xl">
+
+			<div class="breadcrumbs text-sm mb-4">
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li>Acetaminophen</li>
+				</ul>
+			</div>
+
+			<h1 class="text-4xl font-bold mb-2">Acetaminophen</h1>
+			<p class="text-base-content/60 mb-8">Also known as paracetamol (APAP) — a widely used analgesic and antipyretic.</p>
+
+			<!-- Key stats -->
+			<div class="stats stats-vertical sm:stats-horizontal shadow w-full mb-10">
+				<div class="stat">
+					<div class="stat-title">Oral Bioavailability</div>
+					<div class="stat-value text-primary">~85–98%</div>
+				</div>
+				<div class="stat">
+					<div class="stat-title">Onset (oral)</div>
+					<div class="stat-value text-secondary">30–60 min</div>
+				</div>
+				<div class="stat">
+					<div class="stat-title">Half-life</div>
+					<div class="stat-value text-accent">1.5–3 h</div>
+				</div>
+				<div class="stat">
+					<div class="stat-title">Max Adult Dose</div>
+					<div class="stat-value text-error">4 g/day</div>
+					<div class="stat-desc">3 g/day in high-risk patients</div>
+				</div>
+			</div>
+
+			<div class="divider"></div>
+
+			<!-- Overview -->
+			<section class="mb-10">
+				<h2 class="text-2xl font-semibold mb-3">Overview</h2>
+				<p class="mb-3">
+					Acetaminophen (<em>N</em>-acetyl-<em>para</em>-aminophenol, APAP) is an over-the-counter analgesic and antipyretic used to relieve mild-to-moderate pain and reduce fever. Unlike NSAIDs, it does not have significant anti-inflammatory activity at therapeutic doses and does not inhibit platelet function.
+				</p>
+				<p>
+					It is one of the most commonly used drugs worldwide and is a first-line agent for pain management in patients who cannot tolerate NSAIDs (e.g., those with peptic ulcer disease or renal impairment).
+				</p>
+			</section>
+
+			<!-- Chemical profile -->
+			<section class="mb-10">
+				<h2 class="text-2xl font-semibold mb-3">Chemical Profile</h2>
+				<div class="overflow-x-auto">
+					<table class="table table-zebra w-full">
+						<tbody>
+							<tr><th>IUPAC Name</th><td>N-(4-hydroxyphenyl)acetamide</td></tr>
+							<tr><th>Molecular Formula</th><td>C₈H₉NO₂</td></tr>
+							<tr><th>Molecular Weight</th><td>151.16 g/mol</td></tr>
+							<tr><th>Drug Class</th><td>Para-aminophenol derivative; analgesic; antipyretic</td></tr>
+							<tr><th>CAS Number</th><td>103-90-2</td></tr>
+						</tbody>
+					</table>
+				</div>
+			</section>
+
+			<!-- Mechanism of action -->
+			<section class="mb-10">
+				<h2 class="text-2xl font-semibold mb-3">Mechanism of Action</h2>
+				<p class="mb-4 text-base-content/70">The exact mechanism is not fully established. Three proposed pathways:</p>
+				<div class="grid gap-4 sm:grid-cols-3">
+					<div class="card bg-base-200">
+						<div class="card-body">
+							<h3 class="card-title text-base">Central COX Inhibition</h3>
+							<p class="text-sm">Weakly inhibits COX-1 and COX-2 centrally, reducing prostaglandin synthesis in the CNS without the peripheral GI/renal effects of NSAIDs.</p>
+						</div>
+					</div>
+					<div class="card bg-base-200">
+						<div class="card-body">
+							<h3 class="card-title text-base">Endocannabinoid Pathway</h3>
+							<p class="text-sm">Metabolite AM404 forms in the CNS, activates TRPV1 receptors, and inhibits endocannabinoid reuptake, contributing to analgesia.</p>
+						</div>
+					</div>
+					<div class="card bg-base-200">
+						<div class="card-body">
+							<h3 class="card-title text-base">Serotonergic Pathway</h3>
+							<p class="text-sm">Evidence suggests involvement of descending serotonergic pain-modulation pathways in the spinal cord.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Pharmacokinetics -->
+			<section class="mb-10">
+				<h2 class="text-2xl font-semibold mb-3">Pharmacokinetics</h2>
+				<div class="overflow-x-auto">
+					<table class="table table-zebra w-full">
+						<tbody>
+							<tr><th>Absorption</th><td>Rapid and nearly complete from the GI tract; oral bioavailability ~85–98%</td></tr>
+							<tr><th>Onset</th><td>30–60 minutes (oral)</td></tr>
+							<tr><th>Peak plasma</th><td>~30–60 minutes (IR); ~1–2 hours (extended-release)</td></tr>
+							<tr><th>Half-life</th><td>1.5–3 hours (therapeutic); prolonged in overdose or hepatic impairment</td></tr>
+							<tr><th>Metabolism</th><td>Primarily hepatic: ~55% glucuronidation, ~30% sulfation, ~5–10% via CYP2E1/CYP3A4 to NAPQI</td></tr>
+							<tr><th>Elimination</th><td>Renal excretion of conjugated metabolites</td></tr>
+						</tbody>
+					</table>
+				</div>
+			</section>
+
+			<!-- Toxicology -->
+			<section class="mb-10">
+				<h2 class="text-2xl font-semibold mb-3">Toxicology</h2>
+
+				<div class="alert alert-warning mb-6">
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+					</svg>
+					<span><strong>Maximum adult dose:</strong> 4 g/day — reduce to 3 g/day in high-risk patients (chronic alcohol use, hepatic impairment).</span>
+				</div>
+
+				<p class="mb-6">At therapeutic doses, NAPQI — the reactive CYP2E1/CYP3A4 metabolite — is rapidly detoxified by conjugation with glutathione. In overdose, glutathione stores are depleted and NAPQI accumulates.</p>
+
+				<h3 class="font-semibold mb-4">Overdose Cascade</h3>
+				<ul class="steps steps-vertical mb-6">
+					<li class="step step-success">Therapeutic dose — NAPQI conjugated with glutathione → excreted safely</li>
+					<li class="step step-warning">Overdose — excess NAPQI generated, glutathione stores depleted</li>
+					<li class="step step-error">NAPQI accumulates → centrilobular hepatic necrosis</li>
+					<li class="step step-info">Treatment: <em>N</em>-acetylcysteine (NAC) replenishes glutathione; most effective within 8–10 hours</li>
+				</ul>
+
+				<div class="alert alert-info">
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20A10 10 0 0012 2z" />
+					</svg>
+					<span>The <strong>Rumack–Matthew nomogram</strong> guides NAC treatment decisions based on plasma acetaminophen concentration plotted against time post-ingestion.</span>
+				</div>
+			</section>
+
+			<!-- Formulations -->
+			<section class="mb-10">
+				<h2 class="text-2xl font-semibold mb-3">Formulations</h2>
+				<div class="grid gap-3 sm:grid-cols-2">
+					<div class="card card-border bg-base-100">
+						<div class="card-body py-3 px-4">
+							<p class="font-medium">Oral tablet / caplet</p>
+							<p class="text-sm text-base-content/60">325 mg, 500 mg, 650 mg ER</p>
+						</div>
+					</div>
+					<div class="card card-border bg-base-100">
+						<div class="card-body py-3 px-4">
+							<p class="font-medium">Oral liquid suspension</p>
+							<p class="text-sm text-base-content/60">160 mg/5 mL — pediatric</p>
+						</div>
+					</div>
+					<div class="card card-border bg-base-100">
+						<div class="card-body py-3 px-4">
+							<p class="font-medium">Rectal suppository</p>
+							<p class="text-sm text-base-content/60">120 mg, 325 mg, 650 mg</p>
+						</div>
+					</div>
+					<div class="card card-border bg-base-100">
+						<div class="card-body py-3 px-4">
+							<p class="font-medium">Intravenous solution</p>
+							<p class="text-sm text-base-content/60">10 mg/mL — hospital use</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Concordance (data) -->
+			<section class="mb-10">
+				<div class="collapse collapse-arrow bg-base-200">
+					<input type="checkbox" />
+					<div class="collapse-title text-xl font-semibold">
+						Concordance <span class="text-sm font-normal text-base-content/50 ml-2">({pageTerms.length} terms)</span>
+					</div>
+					<div class="collapse-content">
+						<!-- Legend -->
+						<div class="flex flex-wrap gap-2 mb-4 pt-2">
+							{categories.map(({ category, badgeClass }) => (
+						<span class={`badge ${badgeClass} badge-sm`}>{category}</span>
+					))}
+						</div>
+						<div class="flex flex-wrap gap-2">
+							{pageTerms.map(t => (
+						<a href={`/wiki/${t.slug}`} class={`badge ${t.badgeClass} hover:opacity-80`}>{t.title}</a>
+					))}
+						</div>
+					</div>
+				</div>
+			</section>
+
+			{backlinks.length > 0 && <div class="divider"></div>}
+			{backlinks.length > 0 && (
+			  <section>
+			    <h2 class="text-lg font-semibold mb-3">Referenced by</h2>
+			    <div class="flex flex-wrap gap-2">
+			      {backlinks.map(bl => (
+			        <a href={`/wiki/${bl.slug}`} class="btn btn-sm btn-ghost">{bl.title}</a>
+			      ))}
+			    </div>
+			  </section>
+			)}
+		</main>
+	</body>
+</html>

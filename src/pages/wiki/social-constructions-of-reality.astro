@@ -1,0 +1,263 @@
+---
+import '../../styles/global.css';
+
+export const title = "4.3 Social Constructions of Reality";
+export const pageCategory = "content";
+export const badgeClass = "badge-neutral";
+export const links: string[] = [
+  "social-construction-of-reality",
+  "habitualization",
+  "institutionalization",
+  "thomas-theorem",
+  "self-fulfilling-prophecy",
+  "role",
+  "status",
+  "ascribed-status",
+  "achieved-status",
+  "role-set",
+  "role-strain",
+  "role-conflict",
+  "role-performance",
+  "dramaturgy",
+  "impression-management",
+  "looking-glass-self",
+  "erving-goffman",
+  "charles-cooley",
+  "peter-berger",
+  "thomas-luckmann",
+  "robert-k-merton",
+  "wi-thomas",
+  "symbolic-interactionism",
+  "social-class",
+  "social-integration",
+];
+
+const siteTitle = 'SAGreenXYZ';
+const mySlug = 'social-constructions-of-reality';
+const allPages = import.meta.glob<{ title?: string; pageCategory?: string; badgeClass?: string; links?: string[] }>('./*.astro', { eager: true });
+const pageTerms = links.map(slug => ({
+  slug,
+  title: allPages[`./${slug}.astro`]?.title ?? slug,
+  badgeClass: allPages[`./${slug}.astro`]?.badgeClass ?? 'badge-ghost',
+  pageCategory: allPages[`./${slug}.astro`]?.pageCategory ?? 'concept',
+}));
+const categories = [...new Map(pageTerms.map(t => [t.pageCategory, t.badgeClass])).entries()]
+  .map(([category, badgeClass]) => ({ category, badgeClass }));
+const backlinks = Object.entries(allPages)
+  .filter(([, mod]) => mod.links?.includes(mySlug))
+  .map(([p, mod]) => ({
+    slug: p.replace('./', '').replace('.astro', ''),
+    title: mod.title ?? p.replace('./', '').replace('.astro', ''),
+  }))
+  .sort((a, b) => a.title.localeCompare(b.title));
+---
+
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>4.3 Social Constructions of Reality — {siteTitle}</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div class="navbar bg-base-100 shadow-sm">
+      <div class="navbar-start">
+        <a href="/" class="btn btn-ghost text-xl">{siteTitle}</a>
+      </div>
+      <div class="navbar-end">
+        <a href="/wiki" class="btn btn-ghost btn-sm">Wiki</a>
+      </div>
+    </div>
+
+    <main class="container mx-auto px-4 py-12 max-w-3xl">
+
+      <!-- Breadcrumbs -->
+      <div class="breadcrumbs text-sm mb-4">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/wiki">Wiki</a></li>
+          <li>4.3 Social Constructions of Reality</li>
+        </ul>
+      </div>
+
+      <!-- Title -->
+      <div class="flex items-center gap-3 mb-2">
+        <span class="badge badge-secondary">4.3</span>
+        <h1 class="text-4xl font-bold">Social Constructions of Reality</h1>
+      </div>
+      <p class="text-base-content/60 mb-8">Sociology — How society, roles, and identity are constructed through interaction.</p>
+
+      <!-- Learning Objectives -->
+      <div class="card bg-base-200 mb-10">
+        <div class="card-body">
+          <h2 class="card-title text-lg">Learning Objectives</h2>
+          <p class="text-sm text-base-content/70 mb-2">By the end of this section, you should be able to:</p>
+          <ul class="list-disc list-inside space-y-1 text-sm">
+            <li>Interpret the sociological concept of reality as a social construct</li>
+            <li>Define roles and describe their places in people's daily interactions</li>
+            <li>Explain how individuals present themselves and perceive themselves in a social context</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Social Construction of Reality -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold mb-4">Social Construction of Reality</h2>
+
+        <p class="mb-4">In 1966 sociologists Peter Berger and Thomas Luckmann wrote <em>The Social Construction of Reality</em>, arguing that society is created by humans and human interaction — a process they call <strong>habitualization</strong>: "any action that is repeated frequently becomes cast into a pattern, which can then be performed again in the future in the same manner and with the same economical effort" (Berger and Luckmann 1966). Not only do we construct our own society but we also accept it as it is because others have created it before us. Society is, in fact, "habit."</p>
+
+        <p class="mb-4">For example, your school exists as a school and not just as a building because you and others agree that it is a school. This is an example of <strong>institutionalization</strong> — the act of implanting a convention or norm into society. The institution, while socially constructed, is still quite real.</p>
+
+        <p class="mb-4">Another lens is W.I. Thomas's <strong>Thomas theorem</strong>: "If men define situations as real, they are real in their consequences" (Thomas and Thomas 1928). People's behavior can be determined by their subjective construction of reality rather than by objective reality. A teenager repeatedly labeled "overachiever" or "bum" might live up to the term even though it initially wasn't part of their character.</p>
+
+        <p class="mb-4">Robert K. Merton defined this as a <strong>self-fulfilling prophecy</strong> — even a false idea can become true if it is acted upon. His classic example is a bank run: if people falsely fear a bank will go bankrupt and demand all their cash at once, the bank does indeed run out of money, fulfilling the false prophecy.</p>
+
+        <p class="mb-4">Symbolic interactionists add another lens: the symbols (language, gestures, artifacts) people use to interact and how they interpret them. Not every English word translates easily into another language, and gestures vary across cultures — a "thumbs up" means "great" in America, "one" in Germany, and "five" in Japan. Our construction of reality is shaped by our symbolic interactions.</p>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- Roles and Status -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold mb-4">Roles and Status</h2>
+
+        <p class="mb-4"><strong>Roles</strong> are patterns of behavior that we recognize in each other that are representative of a person's social status. While reading this text, you are playing the role of a student — but you also play roles like "daughter," "neighbor," or "employee." <strong>Status</strong> describes the responsibilities and benefits a person experiences according to their rank and role in society.</p>
+
+        <!-- Status types -->
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="card bg-base-200">
+            <div class="card-body">
+              <h3 class="card-title text-base">Ascribed Status</h3>
+              <p class="text-sm">Statuses you do not select — son, elderly person, female. Assigned at birth or by circumstances beyond your control.</p>
+            </div>
+          </div>
+          <div class="card bg-base-200">
+            <div class="card-body">
+              <h3 class="card-title text-base">Achieved Status</h3>
+              <p class="text-sm">Statuses obtained by choice — high school dropout, self-made millionaire, nurse. The result of effort or decision.</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="mb-4">Even a single status such as "student" has a complex <strong>role-set</strong> — an array of roles attached to it (Merton 1957). Status refers to rank in social hierarchy; role is the behavior expected of someone holding that status.</p>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-4">
+          <div class="card bg-base-200">
+            <div class="card-body">
+              <h3 class="card-title text-base">Role Strain</h3>
+              <p class="text-sm">When too much is required of a single role. A parent must cook, clean, drive, problem-solve, and provide moral guidance — all at once.</p>
+            </div>
+          </div>
+          <div class="card bg-base-200">
+            <div class="card-body">
+              <h3 class="card-title text-base">Role Conflict</h3>
+              <p class="text-sm">When two or more roles are contradictory. A parent with a full-time career faces role conflict when a work deadline and a sick child compete simultaneously.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- Presentation of Self -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold mb-4">Presentation of Self</h2>
+
+        <p class="mb-4"><strong>Role performance</strong> is how a person expresses their role. Sociologist Erving Goffman presented the idea that a person is like an actor on a stage. His theory of <strong>dramaturgy</strong> holds that we use <strong>impression management</strong> to present ourselves to others as we hope to be perceived. Each situation is a new scene, and individuals perform different roles depending on who is present (Goffman 1959).</p>
+
+        <p class="mb-4">Think about the way you behave around your coworkers versus your grandparents versus a first date. The setting matters too — if friends come over for dinner, you play the role of host while they play guests. There needs to be a shared reality between all players. A judge's robe and gavel are "props" creating an impression of fairness and gravity. Attorneys select hairstyle and apparel for witnesses in courtroom proceedings for exactly this reason.</p>
+
+        <p class="mb-4">Goffman's ideas expand on Charles Cooley's <strong>looking-glass self</strong>: we base our self-image on what we think other people see (Cooley 1902). We imagine how we appear to others, react to this speculation by adjusting our appearance and behavior, then draw conclusions from their reactions. People's reactions to us are like a mirror — we develop our personal sense of self through this reflective process.</p>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- Summary table -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold mb-4">Key Concepts Summary</h2>
+        <div class="overflow-x-auto">
+          <table class="table table-zebra w-full">
+            <thead>
+              <tr>
+                <th>Concept</th>
+                <th>Thinker</th>
+                <th>Definition</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Habitualization</td>
+                <td>Berger & Luckmann</td>
+                <td>Repeated actions become patterns; the basis of social reality</td>
+              </tr>
+              <tr>
+                <td>Institutionalization</td>
+                <td>Berger & Luckmann</td>
+                <td>Implanting a convention or norm into society</td>
+              </tr>
+              <tr>
+                <td>Thomas theorem</td>
+                <td>W.I. Thomas</td>
+                <td>"If men define situations as real, they are real in their consequences"</td>
+              </tr>
+              <tr>
+                <td>Self-fulfilling prophecy</td>
+                <td>Robert K. Merton</td>
+                <td>A false belief that becomes true because it is acted upon</td>
+              </tr>
+              <tr>
+                <td>Dramaturgy</td>
+                <td>Erving Goffman</td>
+                <td>Life as performance; we manage impressions like actors on a stage</td>
+              </tr>
+              <tr>
+                <td>Looking-glass self</td>
+                <td>Charles Cooley</td>
+                <td>Self-image is shaped by how we believe others perceive us</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- Concordance -->
+      <section class="mb-10">
+        <div class="collapse collapse-arrow bg-base-200">
+          <input type="checkbox" />
+          <div class="collapse-title text-xl font-semibold">
+            Concordance <span class="text-sm font-normal text-base-content/50 ml-2">({pageTerms.length} terms)</span>
+          </div>
+          <div class="collapse-content">
+            <div class="flex flex-wrap gap-2 mb-4 pt-2">
+              {categories.map(({ category, badgeClass }) => (
+              <span class={`badge ${badgeClass} badge-sm`}>{category}</span>
+            ))}
+            </div>
+            <div class="flex flex-wrap gap-2">
+              {pageTerms.map(t => (
+                <a href={`/wiki/${t.slug}`} class={`badge ${t.badgeClass} hover:opacity-80`}>{t.title}</a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {backlinks.length > 0 && <div class="divider"></div>}
+      {backlinks.length > 0 && (
+        <section>
+          <h2 class="text-lg font-semibold mb-3">Referenced by</h2>
+          <div class="flex flex-wrap gap-2">
+            {backlinks.map(bl => (
+              <a href={`/wiki/${bl.slug}`} class="btn btn-sm btn-ghost">{bl.title}</a>
+            ))}
+          </div>
+        </section>
+      )}
+    </main>
+  </body>
+</html>

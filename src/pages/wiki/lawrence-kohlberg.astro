@@ -1,0 +1,71 @@
+---
+import '../../styles/global.css';
+
+export const title = "Lawrence Kohlberg";
+export const pageCategory = "thinker";
+export const badgeClass = "badge-error";
+export const links: string[] = [];
+
+const siteTitle = 'SAGreenXYZ';
+const mySlug = 'lawrence-kohlberg';
+const allPages = import.meta.glob<{ title?: string; links?: string[] }>('./*.astro', { eager: true });
+const backlinks = Object.entries(allPages)
+  .filter(([, mod]) => mod.links?.includes(mySlug))
+  .map(([p, mod]) => ({
+    slug: p.replace('./', '').replace('.astro', ''),
+    title: mod.title ?? p.replace('./', '').replace('.astro', ''),
+  }))
+  .sort((a, b) => a.title.localeCompare(b.title));
+---
+
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} — {siteTitle}</title>
+  </head>
+  <body>
+    <div class="navbar bg-base-100 shadow-sm">
+      <div class="navbar-start">
+        <a href="/" class="btn btn-ghost text-xl">{siteTitle}</a>
+      </div>
+      <div class="navbar-end">
+        <a href="/wiki" class="btn btn-ghost btn-sm">Wiki</a>
+      </div>
+    </div>
+
+    <main class="container mx-auto px-4 py-12 max-w-3xl">
+      <div class="breadcrumbs text-sm mb-4">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/wiki">Wiki</a></li>
+          <li>{title}</li>
+        </ul>
+      </div>
+
+      <h1 class="text-4xl font-bold mb-2">{title}</h1>
+      <p class="text-base-content/60 mb-8">Wiki stub — content not yet added.</p>
+
+      <div class="divider"></div>
+
+      <div class="alert">
+        <span>This page is a placeholder. Full content for <strong>{title}</strong> will be added in a future update.</span>
+      </div>
+
+      {backlinks.length > 0 && <div class="divider"></div>}
+      {backlinks.length > 0 && (
+        <section>
+          <h2 class="text-lg font-semibold mb-3">Referenced by</h2>
+          <div class="flex flex-wrap gap-2">
+            {backlinks.map(bl => (
+              <a href={`/wiki/${bl.slug}`} class="btn btn-sm btn-ghost">{bl.title}</a>
+            ))}
+          </div>
+        </section>
+      )}
+    </main>
+  </body>
+</html>
